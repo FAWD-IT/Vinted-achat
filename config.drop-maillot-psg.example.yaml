@@ -1,0 +1,27 @@
+# Exemple pour : https://www.vinted.be/items/10033505879-maillot-psg
+# Copier vers config.yaml et adapter avant le drop.
+
+vinted:
+  base_url: https://www.vinted.be
+  locale: fr
+
+snipe:
+  item_url: https://www.vinted.be/items/10033505879-maillot-psg
+  preload_ms: 5000
+  poll_interval_ms: 1000
+  burst_refresh_ms: 100
+  burst_duration_ms: 30000
+  fire_early_ms: 120
+  # Relais préféré (sous-chaîne affichée dans la liste Vinted)
+  preferred_relay_substring: "LIBRAIRIE DU COIN"
+
+safety:
+  enable_purchase: false
+  max_price_eur: 6
+  advance_checkout: true
+  # true = clic Payer (puis 3DS manuel) ; laisser false tant que tu testes
+  click_pay: false
+
+browser:
+  headless: false
+  slow_mo: 0

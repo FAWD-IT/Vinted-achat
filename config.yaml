@@ -1,0 +1,32 @@
+vinted:
+  base_url: https://www.vinted.be
+  locale: fr
+
+snipe:
+  # Drop Inoxtag — compte à rebours dressing (même horaire sur les annonces)
+  item_urls:
+    - https://www.vinted.be/items/10033410726-survetement-squid-game-inoxtag
+    - https://www.vinted.be/items/10083071222-gopro-9-black-avec-batterie
+    - https://www.vinted.be/items/10033440067-maillot-equipe-de-france-inoxtag
+    - https://www.vinted.be/items/10033663947-veste-sherpa-nike-agc
+  multi_stop_on_first_success: false
+  smart_wait: true
+  poll_start_before_ms: 900000
+  poll_jitter_ratio: 0.12
+  multi_tab_open_gap_ms: 800
+  preload_ms: 1000
+  poll_interval_ms: 500
+  burst_refresh_ms: 0
+  burst_duration_ms: 120000
+  fire_early_ms: 0
+  preferred_relay_substring: "Librairie Du Coin"
+
+safety:
+  enable_purchase: true
+  max_price_eur: 12
+  advance_checkout: true
+  click_pay: true
+
+browser:
+  headless: false
+  slow_mo: 0

@@ -1,0 +1,36 @@
+# Copier vers config.yaml
+vinted:
+  base_url: https://www.vinted.fr
+  locale: fr
+
+snipe:
+  # Une annonce (si item_urls est vide)
+  item_url: ""
+  # Plusieurs annonces (prioritaire)
+  item_urls: []
+  # true = arrêt au 1er achat réussi ; false = tenter chaque URL
+  multi_stop_on_first_success: true
+  smart_wait: true
+  poll_start_before_ms: 900000
+  poll_jitter_ratio: 0.12
+  multi_tab_open_gap_ms: 800
+  # Millisecondes avant la fin du compte à rebours pour pré-charger la page
+  preload_ms: 3000
+  # Intervalle de polling quand la date de fin est inconnue (ms)
+  poll_interval_ms: 500
+  # Rafraîchir la page en fin de compte à rebours (ms), 0 = désactivé
+  burst_refresh_ms: 150
+  # Durée max du mode burst après la fin prévue (ms)
+  burst_duration_ms: 15000
+  # Avance sur l'horloge locale (ms) — utile si votre horloge est en retard
+  fire_early_ms: 80
+
+safety:
+  enable_purchase: false
+  max_price_eur: null
+  # Après Acheter : préparer le checkout sans cliquer Payer
+  advance_checkout: true
+
+browser:
+  headless: false
+  slow_mo: 0

@@ -1,0 +1,29 @@
+{
+  "name": "vinted-achat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bot d'achat Vinted pour annonces avec compte à rebours (Dressing)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "login": "tsx src/cli/login.ts",
+    "inspect": "tsx src/cli/inspect.ts",
+    "snipe": "tsx src/cli/snipe.ts",
+    "checkout": "tsx src/cli/checkout.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "playwright": "^1.51.0",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
