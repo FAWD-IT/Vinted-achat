@@ -1,5 +1,12 @@
 # Description du projet
 
+## Dépôt
+
+- **GitHub (privé)** : [github.com/FAWD-IT/Vinted-achat](https://github.com/FAWD-IT/Vinted-achat)
+- Clone : `git clone git@github.com:FAWD-IT/Vinted-achat.git`
+
+Fichiers **locaux** (non versionnés) : `.env`, `data/auth-state.json`.
+
 ## Vision
 
 Automatiser la **phase critique** d’un achat Vinted lors d’un **compte à rebours Dressing** : synchroniser l’horloge, détecter la fin du minuteur et déclencher le clic **Acheter** le plus tôt possible, tout en conservant des garde-fous (plafond de prix, activation explicite).
