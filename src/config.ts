@@ -35,6 +35,7 @@ const configSchema = z.object({
   browser: z.object({
     headless: z.boolean().default(false),
     slow_mo: z.number().int().nonnegative().default(0),
+    channel: z.string().optional().default(""),
   }),
   buyer: z.object({
     phone: z.string().optional().default(""),
@@ -118,6 +119,9 @@ export function loadConfig(): AppConfig {
     browser: {
       ...defaultConfig.browser,
       ...loadYamlConfig().browser,
+      ...(process.env.BROWSER_CHANNEL
+        ? { channel: process.env.BROWSER_CHANNEL.trim() }
+        : {}),
     },
     buyer: {
       ...defaultConfig.buyer,

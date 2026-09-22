@@ -36,7 +36,10 @@ ENABLE_PURCHASE=true
 CLICK_PAY=true
 MAX_PRICE_EUR=12
 VINTED_PHONE=+32...
+BROWSER_CHANNEL=msedge
 ```
+
+Sur **Windows**, `BROWSER_CHANNEL=msedge` (ou `chrome`) utilise le navigateur **réel** au lieu du Chromium embarqué Playwright — Vinted bloque souvent ce dernier (« activité automatisée »), **même IP** que sur Mac.
 
 6. Enregistrer la session **sur cette machine** :
 
@@ -44,7 +47,9 @@ VINTED_PHONE=+32...
 npm run login
 ```
 
-Connecte-toi à Vinted.be dans Chromium, valide 2FA si besoin, puis Entrée dans le terminal.
+Connecte-toi à Vinted.be dans **Edge/Chrome** (fenêtre ouverte par le script), valide 2FA si besoin, puis Entrée dans le terminal.
+
+**Ne pas** enchaîner plusieurs `npm run inspect` : une requête de test suffit avant le drop.
 
 7. Vérifier :
 
@@ -91,10 +96,31 @@ git clone git@github.com:FAWD-IT/Vinted-achat.git   # accès org FAWD-IT requis
 
 Ne pousser que le code + `config.example.yaml`. Session et `.env` restent locaux sur chaque PC.
 
+## « Ta session a été bloquée » (Windows / Playwright)
+
+Ce n’est **pas** parce que l’IP est différente du Mac : c’est le **profil navigateur** (Chromium Playwright = signal « bot ») + parfois une session copiée depuis une autre machine.
+
+**Ordre à suivre :**
+
+1. **Arrêter** le bot et ne plus lancer `inspect` / `snipe` pendant un moment (30 min à quelques h).
+2. Ouvrir **Edge ou Chrome normal** (hors script) → [vinted.be](https://www.vinted.be) → vérifier que tu peux naviguer **sans** la page bloc.
+3. Si le navigateur normal est OK : `git pull`, ajouter dans `.env` :
+
+   ```env
+   BROWSER_CHANNEL=msedge
+   ```
+
+4. Supprimer l’ancienne session Windows : `data/auth-state.json`.
+5. `npm run login` **sur le PC Windows** (pas copier le fichier du Mac).
+6. **Un seul** `npm run inspect`, puis `npm run snipe` seulement ~20–30 min avant le drop.
+
+Désactiver VPN, proxy, bloqueurs agressifs sur le PC. Ne pas utiliser le **même compte Vinted** en parallèle sur Mac et Windows au moment du snipe.
+
 ## Dépannage rapide
 
 | Symptôme | Action |
 |----------|--------|
+| « Session bloquée » | Section ci-dessus + `BROWSER_CHANNEL=msedge` |
 | « Session absente » | `npm run login` |
 | Cloudflare / captcha | Moins de requêtes (`smart_wait: true`), relancer login |
 | Page « Se connecter » | Session expirée — refaire login sur ce PC |

@@ -1,7 +1,7 @@
 import path from "node:path";
-import { chromium } from "playwright";
 import { loadConfig, resolveAuthStatePath } from "../config.js";
 import { ensureDataDir } from "../vinted/browser.js";
+import { launchBrowser } from "../vinted/launchBrowser.js";
 import { log } from "../util.js";
 
 async function main(): Promise<void> {
@@ -10,10 +10,7 @@ async function main(): Promise<void> {
   await ensureDataDir(authStatePath);
 
   log("info", "Ouverture du navigateur — connectez-vous à Vinted, puis fermez la fenêtre.");
-  const browser = await chromium.launch({
-    headless: false,
-    slowMo: config.browser.slow_mo,
-  });
+  const browser = await launchBrowser({ ...config, browser: { ...config.browser, headless: false } });
 
   const context = await browser.newContext({
     locale: `${config.vinted.locale}-FR`,

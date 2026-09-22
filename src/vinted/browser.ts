@@ -1,13 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import {
-  chromium,
   type Browser,
   type BrowserContext,
   type Page,
 } from "playwright";
 import type { AppConfig } from "../config.js";
 import { log } from "../util.js";
+import {
+  isVintedSessionBlocked,
+  launchBrowser,
+  VintedSessionBlockedError,
+} from "./launchBrowser.js";
 
 export async function createContext(
   config: AppConfig,
@@ -19,10 +23,7 @@ export async function createContext(
     );
   }
 
-  const browser = await chromium.launch({
-    headless: config.browser.headless,
-    slowMo: config.browser.slow_mo,
-  });
+  const browser = await launchBrowser(config);
 
   const context = await browser.newContext({
     storageState: authStatePath,
@@ -58,7 +59,11 @@ export async function fetchItemHtml(
   if (!response?.ok()) {
     log("warn", `Chargement HTTP ${response?.status() ?? "?"} — nouvel essai…`);
   }
-  return page.content();
+  const html = await page.content();
+  if (isVintedSessionBlocked(html)) {
+    throw new VintedSessionBlockedError();
+  }
+  return html;
 }
 
 export async function ensureDataDir(authStatePath: string): Promise<void> {
