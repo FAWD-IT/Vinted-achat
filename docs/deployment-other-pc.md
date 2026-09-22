@@ -86,7 +86,7 @@ Les cookies expirent : si le bot redirige vers la connexion, refaire `npm run lo
 Pour synchroniser le **code** entre machines :
 
 ```bash
-git clone git@github.com:FAWD-IT/Vinted-achat.git   # repo privé
+git clone git@github.com:FAWD-IT/Vinted-achat.git
 ```
 
 Ne pousser que le code + `config.example.yaml`. Session et `.env` restent locaux sur chaque PC.

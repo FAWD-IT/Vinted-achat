@@ -2,7 +2,7 @@
 
 ## Dépôt
 
-- **GitHub (privé)** : [github.com/FAWD-IT/Vinted-achat](https://github.com/FAWD-IT/Vinted-achat)
+- **GitHub (public)** : [github.com/FAWD-IT/Vinted-achat](https://github.com/FAWD-IT/Vinted-achat)
 - Clone : `git clone git@github.com:FAWD-IT/Vinted-achat.git`
 
 Fichiers **locaux** (non versionnés) : `.env`, `data/auth-state.json`.
@@ -13,14 +13,14 @@ Automatiser la **phase critique** d’un achat Vinted lors d’un **compte à re
 
 ## Périmètre v1
 
-- Une annonce cible (URL unique).
+- Une ou plusieurs annonces (`item_urls`).
 - Session utilisateur réelle via Playwright (`data/auth-state.json`).
 - Lecture de `closet_countdown_end_date` embarquée dans la page item.
 - Pas de contournement CAPTCHA / proxy / autobuy complet jusqu’au paiement.
 
-## Hors périmère
+## Hors périmètre
 
-- Surveillance multi-annonces ou catalogues entiers.
+- Surveillance de catalogues entiers (hors liste cible).
 - Autobuy sans confirmation humaine sur le paiement.
 - Contournement des protections anti-bot.
 
