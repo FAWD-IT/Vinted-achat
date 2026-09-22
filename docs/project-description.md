@@ -2,7 +2,7 @@
 
 ## Dépôt
 
-- **GitHub (public)** : [github.com/FAWD-IT/Vinted-achat](https://github.com/FAWD-IT/Vinted-achat)
+- **GitHub (privé)** : [github.com/FAWD-IT/Vinted-achat](https://github.com/FAWD-IT/Vinted-achat)
 - Clone : `git clone git@github.com:FAWD-IT/Vinted-achat.git`
 
 Fichiers **locaux** (non versionnés) : `.env`, `data/auth-state.json`.
